@@ -1,5 +1,5 @@
 <?php 
-namespace PphClass\PersianDate;
+namespace brkfun\PersianDate;
 
 class PersianDate
 {
