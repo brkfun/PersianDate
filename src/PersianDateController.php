@@ -1,10 +1,14 @@
-<?php 
-namespace brkfun\PersianDate;
+<?php
 
-class PersianDate
+namespace BRKFun\PersianDate;
+
+use App\Http\Controllers\Controller;
+
+class PersianDateController extends Controller
 {
+    public $returnValue;
 
-	var $persian_month_names=array(
+    var $persian_month_names=array(
 	'01'=>'&#1601;&#1585;&#1608;&#1585;&#1583;&#1740;&#1606;',
 	'02'=>'&#1575;&#1585;&#1583;&#1740;&#1576;&#1607;&#1588;&#1578;',
 	'03'=>'&#1582;&#1585;&#1583;&#1575;&#1583;',
@@ -29,12 +33,12 @@ class PersianDate
 	'5'=>'&#1570;&#1583;&#1740;&#1606;&#1607;'
 	);
 	
-	function div($a,$b) 
+	function div($a,$b)
 	{
 		return (int) ($a / $b);
 	}
-	
-	function gregorian_to_persian($g_y, $g_m, $g_d)
+
+    function gregorian_to_persian($g_y, $g_m, $g_d)
 	{
 		$g_days_in_month = array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
 		$j_days_in_month = array(31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29);
@@ -66,8 +70,8 @@ class PersianDate
 		if(strlen($jd)==1) $jd='0'.$jd;
 		return array($jy,$jm, $jd);
 	}
-	
-	function persian_to_gregorian($j_y, $j_m, $j_d)
+
+    function persian_to_gregorian($j_y, $j_m, $j_d)
 	{
 		$g_days_in_month = array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
 		$j_days_in_month = array(31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29);
@@ -109,8 +113,8 @@ class PersianDate
 		if(strlen($gd)==1) $gd='0'.$gd;
 		return array($gy,$gm,$gd);
 	}
-	
-	function to_date($g_date,$input)
+
+    function to_date($g_date,$input)
 	{
 		$g_date=str_replace('-','',$g_date);
 		$g_date=str_replace('/','',$g_date);
@@ -155,13 +159,14 @@ class PersianDate
 				return $this->persian_day_names[date('w')].' '.$persian_d.' '.$this->persian_month_names[$persian_date[1]].' '.$persian_date[0]; 
 		}
 	}
-	
-	function date($input)
+
+    function date($input)
 	{
-		return $this->to_date(date('Y').date('m').date('d'),$input);		
+		return $this->to_date(date('Y').date('m').date('d'),$input);
+
 	}
-	
-	function date_to($j_date)
+
+    function date_to($j_date)
 	{
 		$j_date=str_replace('/','',$j_date);
 		$j_date=str_replace('-','',$j_date);
@@ -171,8 +176,8 @@ class PersianDate
 		$gregorian_date=$this->persian_to_gregorian($j_year,$j_month,$j_day);
 		return $gregorian_date[0].'-'.$gregorian_date[1].'-'.$gregorian_date[2];
 	}
-	
-	function sec_to_day($sec)
+
+    function sec_to_day($sec)
 	{
 		$day[s]=bcmod($sec-time(),60);
 		if(strlen($day[s])==1) $day[s]='0'.$day[s];
@@ -183,7 +188,4 @@ class PersianDate
 		$day[d]=bcdiv(bcdiv(bcdiv($sec-time(),60),60),24);
 		return $day;	
 	}
-	
 }
-
-?>

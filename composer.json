@@ -1,19 +1,13 @@
 {
-    "name": "brkfun/persiandate",
-    "description": "Persian Date Converter",
-    "authors": [
-        {
-            "name": "Burak Faruk ŞAHİN",
-            "email": "burak.faruk@juvenis.com.tr"
-        }
-    ],
-     "require": {
-        "php": ">=5.2.0"
-    },
+    "name": "brkfun/persianisdate",
+    "type": "metapackage",
     "minimum-stability": "dev",
+    "require": {
+      "illuminate/support":"~5"
+    },
     "autoload": {
-        "psr-0": {
-            "BRKFun": "src" 
+        "psr-4": {
+          "BRKFun\\PersianDate\\":"src/"
         }
     }
 }
