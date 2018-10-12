@@ -7,6 +7,10 @@
             "email": "burak.faruk@juvenis.com.tr"
         }
     ],
+     "require": {
+        "php": ">=5.2.0"
+    },
+    "minimum-stability": "dev",
     "autoload": {
         "psr-0": {
             "BRKFun": "src" 
