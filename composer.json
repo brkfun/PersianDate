@@ -1,0 +1,16 @@
+{
+    "name": "brkfun/persiandate",
+    "description": "Persian Date Converter",
+    "license": "Nonprofit-&-Used-For-This-Project",
+    "authors": [
+        {
+            "name": "Burak Faruk ŞAHİN",
+            "email": "burak.faruk@juvenis.com.tr"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "BRKFun": "src" 
+        }
+    }
+}
